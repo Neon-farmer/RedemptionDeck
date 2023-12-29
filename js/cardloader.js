@@ -12,6 +12,7 @@ async function fetchCards() {
       throw new Error('Network error');
     }
     globalCardJSON = await response.json();
+    globalCardJSON.sort((a, b) => a.Name.localeCompare(b.Name));
     globalCardJSON.forEach(card => {
       console.log(card);
     });
@@ -26,7 +27,6 @@ initialize();
 async function initialize() {
   await fetchCards();
   filterCards();
-
 }
 
 // Render the list of cards
@@ -74,31 +74,47 @@ let filters = {
   ability: [],
   rarity: [],
   alignment: [],
-  legality: [],
+  legality: ["Rotation"],
 };
 
+
+/* This function updates the filteredJSON array by applying the filters
+in the filter array to the original JSON array and then loads the first
+24 filtered cards via the loadCards function*/
 async function filterCards() {
-  // Reset counter
+  // The card counter is reset when a new filter is applied
   counter = 0;
 
   // Apply filters
   filteredCardJSON = await new Promise(resolve => {
     const filteredCards = globalCardJSON.filter(card => {
     
-      // Check if the card meets the filter criteria for each filter
+      // Filter by Brigade
       const brigadeCondition = 
         filters.brigade.length === 0 || 
         filters.brigade.every(selectedBrigade => card.Brigade.split('/').includes(selectedBrigade));
 
+      // Filter by Type
       const typeCondition = 
         filters.type.length === 0 ||
         filters.type.every(selectedType => card.Type.split('/').includes(selectedType));
+     
+      // Filter by alignment
+      const alignmentCondition = 
+        filters.alignment.length === 0 ||
+        filters.alignment.every(selectedAlignment => card.Alignment.split('/').includes(selectedAlignment));
+      
+      // Filter by legality
+      const legalityCondition = 
+      filters.legality.every(selectedLegality => card.Legality.includes(selectedLegality));
+      
+      // filters.legality.length === 0 ||
 
-      // Add more conditions for additional filters
 
-      // If no filter is applied, keep the card
       return brigadeCondition &&
-             typeCondition;
+             typeCondition &&
+             alignmentCondition &&
+             legalityCondition;
   });
 
   resolve(filteredCards);
