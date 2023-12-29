@@ -26,11 +26,13 @@ initialize();
 async function initialize() {
   await fetchCards();
   filterCards();
-  loadCards();
+
 }
 
 // Render the list of cards
 function loadCards() {
+  console.log("Cards to be loaded " + filteredCardJSON);
+
   for (let i = 0; i < 24 && i < filteredCardJSON.length; i++) {
     var card = filteredCardJSON[counter];
     // cardData = JSON.parse(card.card);
@@ -61,7 +63,7 @@ $(window).scroll(function(){
 
 /* Each element of the filters array is a Key-Value pair that has the
 filter name as the key and an array of the selected criteria as the value.
-These filters begin as null and are updated when changes are made in the UI */
+These filters begin empty and are updated by the toggleSelection function */
 let filters = {
   name: [],
   set: [],
@@ -75,11 +77,13 @@ let filters = {
   legality: [],
 };
 
-function filterCards() {
-  // Clear existing cards
+async function filterCards() {
+  // Reset counter
+  counter = 0;
 
   // Apply filters
-  filteredCardJSON = globalCardJSON.filter(card => {
+  filteredCardJSON = await new Promise(resolve => {
+    const filteredCards = globalCardJSON.filter(card => {
     
       // Check if the card meets the filter criteria for each filter
       const brigadeCondition = 
@@ -97,7 +101,10 @@ function filterCards() {
              typeCondition;
   });
 
-  // Every time cards are filtered, the screen should be cleared and cards reloaded
+  resolve(filteredCards);
+});
+
+// Every time cards are filtered, the screen should be cleared and cards reloaded
   cardList.innerHTML = '';
   console.log(filteredCardJSON);
   loadCards();

@@ -22,12 +22,15 @@ function toggleSelection(value) {
         const dropdownItem = dropdown.querySelector(`.dropdown-item[data-value="${value}"]`);
         dropdownItem.style.display = 'none';
         document.querySelector('.placeholder').style.display = 'none';
+
+        // Add brigade to the filter array
+        filters.brigade.push(value);
+        filterCards();
       }
     }
+}
 
-  }
-
-  function clearAll() {
+function clearAll() {
   const selectedTags = document.getElementById('selectedTags');
   const dropdown = document.getElementById('dropdown');
 
@@ -41,6 +44,10 @@ function toggleSelection(value) {
 
   // Show the placeholder
   document.querySelector('.placeholder').style.display = 'block';
+
+  // Clear filters array
+  filters.brigade = [];
+  filterCards();
 }
 
 
