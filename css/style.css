@@ -1,0 +1,163 @@
+/* Base Styles */
+
+body {
+    height: 100%;
+    width: 100%;
+    min-width: 400px;
+    background-color: #393939;
+    margin: 0;
+}
+
+/* toolbar styles */
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    height: 50px;
+    width: 100%;
+    background-color: #222222;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    align-items: center;
+    padding: 0;
+    box-shadow: 0px -6px 7px 14px rgba(0,0,0,.1);
+}
+
+.toolbar h1 {
+    display:inline-flex;
+    float: left;
+    color: #FFD23F;
+    font-family:'Courier New', Courier, monospace;
+    padding-left: 20px;
+}
+
+.toolbar button {
+    display:inline-flex;
+
+}
+
+#expand-drawer {
+    padding-right: 20px;
+}
+
+
+#drawer-checkbox {
+    display: none;   
+}
+
+
+/* Drawer Styles */
+
+#drawer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 400px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0px; /* change to -400px */
+    overflow-x: hidden;
+    
+    background-color: #333333;
+    transition: ease all .5s;
+    
+}
+
+.drawer-section {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #BC0000; */
+    border-color: aquamarine;
+    border: aquamarine;
+    
+    border-radius: 10px;
+    height: 50px;
+}
+
+#close-drawer {
+    display: block;
+    padding-left: 15px;
+    position: absolute;
+    left: 0px;
+    color: #FFD23F;
+}
+
+#close-drawer:hover {
+    color: #BC0000;
+}
+
+#drawer-checkbox:checked ~ #drawer {
+    position: fixed;
+    right: 0px;
+
+}
+
+#card-list {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-image {
+    border-radius: 20px;
+    margin: 20px;
+}
+.card-image:hover {
+    box-shadow: -2px -2px 26px 2px #ffffff;
+}
+
+
+/* Mobile Styles */
+
+@media only screen and (max-width: 600px) {
+ 
+    #drawer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -1000px;
+        overflow-x: hidden;
+        
+        background-color: #333333;
+        transition: ease all .5s;
+        
+    }
+    
+    .drawer-section {
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .close-drawer {
+        display: block;
+        padding-left: 15px;
+    }
+    
+    #drawer-checkbox:checked ~ #drawer {
+        position: fixed;
+        right: 0px;
+    
+    }  
+
+
+
+
+
+}

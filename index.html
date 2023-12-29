@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Redemption, redemption card viewer, ccg, redemptiondb, RedemptionDeck">
+    <title>RedemptionDeck</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <link rel="stylesheet" href="search.css"></link>
+    <script src="https://kit.fontawesome.com/d458697f00.js" crossorigin="anonymous"></script></head>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script defer src="cardloader.js"></script>
+<body>
+    <header>
+        <div class="toolbar">
+            <h1 id='title'>RedemptionDeck</h1>
+            <label for="drawer-checkbox" id="expand-drawer">              
+                <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+            </label>
+        </div>
+    </header>
+    <input type="checkbox" name="drawer-checkbox" id="drawer-checkbox"/>
+    
+    <div id="drawer">
+
+        <div class="drawer-section">
+            <label for="drawer-checkbox" id="close-drawer">
+                <i class="fa-solid fa-xmark fa-2xl"></i>
+            </label>
+        </div>
+
+        <div class="drawer-section">
+            <div class="list-wrapper">
+                <div class="checkbox-list">
+
+                    <label for="check1" class="label">
+                        <div class="checkbox-list-item">
+                            <input type="checkbox" class="checkbox" id="check1" value="">
+                            <img src="images/checkmark.png" alt="checkmark" height="20" id="check1img" class="checkimg">
+                            <p class="checkbox-description">Red</p>
+                        </div>
+                    </label>
+
+                    <label for="check2" class="label">
+                    <div class="checkbox-list-item">
+                        <input type="checkbox" class="checkbox" id="check2" value="">
+                        <img src="images/checkmark.png" alt="checkmark" height="20" id="check2img" class="checkimg">
+                        <p class="checkbox-description">Blue</p>
+                    </div>
+                    </label>
+
+                    <label for="check3" class="label">
+                    <div class="checkbox-list-item">
+                        <input type="checkbox" class="checkbox" id="check3" value="">
+                        <img src="images/checkmark.png" alt="checkmark" height="20" id="check3img" class="checkimg">
+                        <p class="checkbox-description">Green</p>
+                    </div>
+                    </label>
+
+                    <label for="check4" class="label">
+                    <div class="checkbox-list-item">
+                        <input type="checkbox" class="checkbox" id="check4" value="">
+                        <img src="images/checkmark.png" alt="checkmark" height="20" id="check4img" class="checkimg">
+                        <p class="checkbox-description">Yellow</p>
+                    </div>
+                    </label>
+
+                </div>
+        
+            </div>
+        </div>
+        <div class="drawer-section">
+
+        </div>
+        <div class="drawer-section">
+
+        </div>
+        
+
+    </div>
+
+    <div id="card-list">
+        
+    </div>
+
+</body>
+</html>

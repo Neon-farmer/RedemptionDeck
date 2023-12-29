@@ -1,0 +1,31 @@
+/* For Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 6px;
+  }
+  
+  /* For Firefox */
+  ::-moz-scrollbar {
+    width: 12px;
+  }
+  
+  ::-moz-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 6px;
+  }
+  
+  /* For Internet Explorer and Edge */
+  /* Note: These styles might not work in the latest versions of Edge as they move towards adopting the Chromium engine */
+  ::-ms-scrollbar {
+    width: 12px;
+  }
+  
+  ::-ms-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 6px;
+  }
+  
