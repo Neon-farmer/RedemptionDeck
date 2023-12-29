@@ -82,8 +82,13 @@ function filterCards() {
   filteredCardJSON = globalCardJSON.filter(card => {
     
       // Check if the card meets the filter criteria for each filter
-      const brigadeCondition = !filters.brigade || filters.brigade.some(selectedBrigade => card.Brigade.split('/').includes(selectedBrigade));
-      const typeCondition = !filters.type || filters.type.some(selectedType => card.Type.split('/').includes(selectedType));
+      const brigadeCondition = 
+        filters.brigade.length === 0 || 
+        filters.brigade.every(selectedBrigade => card.Brigade.split('/').includes(selectedBrigade));
+
+      const typeCondition = 
+        filters.type.length === 0 ||
+        filters.type.every(selectedType => card.Type.split('/').includes(selectedType));
 
       // Add more conditions for additional filters
 
