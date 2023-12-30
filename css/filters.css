@@ -29,7 +29,7 @@
 .clear-all {
   position: absolute;
   top: 9px;
-  right: 10px;
+  right: 4px;
   cursor: pointer;
   color: #a5a5a5;
   z-index: 2;
