@@ -1,6 +1,27 @@
+const brigades = [
+  'Black', 'Blue', 'Brown', 'Clay', 'Crimson',
+  'Gold', 'Gray', 'Green', 'Multi', 'Orange',
+  'Pale Green', 'Purple', 'Red', 'Silver', 'Teal',
+  'White'
+];
+
+function buildDropdown(dropDownID, dropdownItemArray) {
+  var dropdown = document.getElementById(dropDownID);
+    dropdownItemArray.forEach(item => {
+      var itemTemplate = `<div class="dropdown-item" data-value="${item}" onclick="toggleSelection('${item}')">${item}</div>`;
+      dropdown.innerHTML += itemTemplate;
+    });
+}
+
+buildDropdown('brigadeDropdown', brigades);
+
+
+
+
+
 function toggleSelection(value) {
-    const selectedTags = document.getElementById('selectedTags');
-    const dropdown = document.getElementById('dropdown');
+    const selectedTags = document.getElementById('selectedBrigades');
+    const dropdown = document.getElementById('brigadeDropdown');
     const maxSelection = 4;
 
     // Check the number of selected tags
@@ -31,8 +52,8 @@ function toggleSelection(value) {
 }
 
 function clearAll() {
-  const selectedTags = document.getElementById('selectedTags');
-  const dropdown = document.getElementById('dropdown');
+  const selectedTags = document.getElementById('selectedBrigades');
+  const dropdown = document.getElementById('brigadeDropdown');
 
   // Show all items in the dropdown
   dropdown.querySelectorAll('.dropdown-item').forEach(item => {
@@ -52,14 +73,14 @@ function clearAll() {
 
 
   function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown');
+    const dropdown = document.getElementById('brigadeDropdown');
     dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
   }
 
   // Hide dropdown if clicked outside the multi-select component
   window.addEventListener('click', function(event) {
     const multiSelect = document.querySelector('.multi-select');
-    const dropdown = document.getElementById('dropdown');
+    const dropdown = document.getElementById('brigadeDropdown');
 
     if (!multiSelect.contains(event.target) && event.target !== dropdown) {
       dropdown.style.display = 'none';

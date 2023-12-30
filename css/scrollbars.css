@@ -4,6 +4,10 @@ html > ::-webkit-scrollbar {
     display: none;
   }
   
+::-webkit-scrollbar {
+    width: 12px;
+}
+
 ::-webkit-scrollbar-thumb {
   background-color: #808080;
   border-radius: 6px;
