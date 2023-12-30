@@ -81432,7 +81432,7 @@
     {
       "Name": "Buckler (Roots)",
       "Set": "Roots",
-      "ImageFile": "001-Buckler.jpg",
+      "ImageFile": "001-Buckler",
       "Type": "Dominant",
       "Brigade": "-",
       "Strength": "-",
@@ -81449,7 +81449,7 @@
     {
       "Name": "Blue Tassels (Roots)",
       "Set": "Roots",
-      "ImageFile": "002-Blue-Tassels.jpg",
+      "ImageFile": "002-Blue-Tassels",
       "Type": "Artifact",
       "Brigade": "-",
       "Strength": "-",

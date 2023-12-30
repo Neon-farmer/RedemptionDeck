@@ -1,16 +1,18 @@
 /* For Webkit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
+html > ::-webkit-scrollbar {
     width: 12px;
+    display: none;
   }
   
-  ::-webkit-scrollbar-thumb {
-    background-color: #808080;
-    border-radius: 6px;
-  }
+::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border-radius: 6px;
+}
   
   /* For Firefox */
-  ::-moz-scrollbar {
+  html > ::-moz-scrollbar {
     width: 12px;
+    display: none;
   }
   
   ::-moz-scrollbar-thumb {
@@ -20,8 +22,9 @@
   
   /* For Internet Explorer and Edge */
   /* Note: These styles might not work in the latest versions of Edge as they move towards adopting the Chromium engine */
-  ::-ms-scrollbar {
+html > ::-ms-scrollbar {
     width: 12px;
+    display: none;
   }
   
   ::-ms-scrollbar-thumb {

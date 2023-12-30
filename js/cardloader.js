@@ -39,15 +39,28 @@ function loadCards() {
 
     if (card && card.ImageFile && card.Name) {
     console.log(card);
+
+     // Trim .jpg from the end of image files
+     var trimmedImageFile = card.ImageFile.replace(/\.jpg$/, '');
+
       var cardTemplate = 
           `<div class="card">
-          <img src="http://www.redemptionquick.com/lackey/sets/setimages/general/${card.ImageFile}.jpg" alt="${card.Name}" class="card-image">
+          <img src="http://www.redemptionquick.com/lackey/sets/setimages/general/${trimmedImageFile}.jpg" 
+            alt="${card.Name}" 
+            class="card-image"
+            onerror="handleImageError(this)">
           </div>`;
 
       cardList.innerHTML += cardTemplate;
       counter++;
     }
   }
+}
+
+// Fill unfound images with generic card image
+function handleImageError(img) {
+  img.src ='./images/cardback.jpg';
+  img.className ='imageFileNotFound';
 }
 
 // Lazy Loading

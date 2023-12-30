@@ -4,28 +4,27 @@ body {
     height: 100%;
     width: 100%;
     min-width: 400px;
-    background-color: #393939;
+    background-color: #2e2e2e;
     margin: 0;
 }
 
-/* toolbar styles */
 
+/* Toolbar styling */
 .toolbar {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-
     height: 50px;
-    width: 100%;
+    width: 100vw;
     background-color: #222222;
     position: fixed;
     top: 0;
     left: 0;
-
+    z-index: 25;
     align-items: center;
     padding: 0;
-    box-shadow: 0px -6px 7px 14px rgba(0,0,0,.1);
+    box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.1); /* Adjust the box-shadow values */
 }
 
 .toolbar h1 {
@@ -41,8 +40,34 @@ body {
 
 }
 
+
+/* Drawer Controls */
 #expand-drawer {
     padding-right: 20px;
+    color: #FFD23F;
+}
+
+#expand-drawer:hover {
+    padding-right: 20px;
+    color: #ffe695;
+
+}
+
+#close-drawer {
+    display: block;
+    padding-left: 15px;
+    position: absolute;
+    left: 0px;
+    color: #FFD23F;
+}
+
+#close-drawer:hover {
+    color: #ffe695;
+}
+
+#drawer-checkbox:checked ~ #drawer {
+    position: fixed;
+    right: 0px;
 }
 
 
@@ -50,6 +75,25 @@ body {
     display: none;   
 }
 
+#drawer-checkbox:checked ~ #drawer {
+    position: fixed;
+    right: 0px;
+}  
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 40; 
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+#drawer-checkbox:checked ~ .overlay {
+    display: block;
+}
 
 /* Drawer Styles */
 
@@ -62,9 +106,9 @@ body {
     height: 100%;
     position: fixed;
     top: 0;
-    right: 0px; /* change to -400px */
+    right: -400px; /* change to -400px */
     overflow-x: hidden;
-    
+    z-index: 50;
     background-color: #333333;
     transition: ease all .5s;
     
@@ -83,24 +127,6 @@ body {
     height: 50px;
 }
 
-#close-drawer {
-    display: block;
-    padding-left: 15px;
-    position: absolute;
-    left: 0px;
-    color: #FFD23F;
-}
-
-#close-drawer:hover {
-    color: #BC0000;
-}
-
-#drawer-checkbox:checked ~ #drawer {
-    position: fixed;
-    right: 0px;
-
-}
-
 #card-list {
     margin-top: 60px;
     display: flex;
@@ -112,11 +138,23 @@ body {
 .card-image {
     border-radius: 20px;
     margin: 20px;
+    margin-top: 40px;
+    max-height: 450px;
 }
 .card-image:hover {
     box-shadow: -2px -2px 26px 2px #ffffff;
+ 
+
 }
 
+.imageFileNotFound {
+    border-radius: 20px;
+    margin: 20px;
+    margin-top: 40px;
+    max-height: 500px;
+    opacity: .5;
+
+}
 
 /* Mobile Styles */
 
@@ -150,14 +188,7 @@ body {
         padding-left: 15px;
     }
     
-    #drawer-checkbox:checked ~ #drawer {
-        position: fixed;
-        right: 0px;
     
-    }  
-
-
-
 
 
 }
