@@ -21,7 +21,7 @@ async function fetchCards() {
   }
 }
 
-// Load the first 24 cards
+// Wait for the fetch and load the first 24 cards
 initialize();
 
 async function initialize() {
@@ -123,6 +123,7 @@ async function filterCards() {
       
       // filters.legality.length === 0 ||
 
+      
 
       return brigadeCondition &&
              typeCondition &&

@@ -1,4 +1,21 @@
-const cardCategories = [
+// This file contains the drop down items for dropdown menus
+
+const alignment = [
+  'Good', 'Evil', 'Neutral'
+]
+
+const brigades = [
+  'Black', 'Blue', 'Brown', 'Clay', 'Crimson',
+  'Gold', 'Gray', 'Green', 'Multi', 'Orange',
+  'Pale Green', 'Purple', 'Red', 'Silver', 'Teal',
+  'White'
+];
+
+const types = [
+  'GE', 'EE'
+]
+
+const sets = [
     'Gospel of Christ',
     'Lineage of Christ',
     'Prophecies of Christ',

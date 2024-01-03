@@ -1,14 +1,10 @@
-const brigades = [
-  'Black', 'Blue', 'Brown', 'Clay', 'Crimson',
-  'Gold', 'Gray', 'Green', 'Multi', 'Orange',
-  'Pale Green', 'Purple', 'Red', 'Silver', 'Teal',
-  'White'
-];
 
+buildDropdownFilter('brigade', brigades, 'Brigade', 3);
+buildDropdownFilter('type', types, 'Type', 3);
+buildDropdownFilter('set', sets, 'Set', 1);
+buildDropdownFilter('alignment', alignment, 'Alignment', 2);
 
-/* 
-  Template for dropdown: <div class="multi-select" id="{filterName}-filter"></div>
-*/
+// Build the multiselect filters
 function buildDropdownFilter(filterName, dropdownItemArray, placeholderText, maxItemSelection) {
 
   // Select the preexisting filter container
@@ -70,7 +66,7 @@ function buildDropdownFilter(filterName, dropdownItemArray, placeholderText, max
     dropdownItem.dataset.value = item;
     dropdownItem.textContent = item;
     dropdownItem.onclick = function() {
-      toggleSelection(item, filterName + '-dropdown', maxItemSelection);
+      toggleSelection(item, filterName, maxItemSelection);
     };
     dropdown.appendChild(dropdownItem);
   });
@@ -80,14 +76,13 @@ function buildDropdownFilter(filterName, dropdownItemArray, placeholderText, max
 
 }
 
-// Show or hide the dropdown
-function toggleDropdown(filterName) {
-  var dropdown = document.getElementById(filterName + '-dropdown');
-  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-}
 
-buildDropdownFilter('brigade', brigades, 'Brigade', 3);
-buildDropdownFilter('type', brigades, 'Brigade', 3);
+
+
+
+
+
+
 
 function toggleSelection(item, filterName, maxItemSelection) {
   var selectedTags = document.getElementById(filterName + '-selected-tags');
@@ -95,7 +90,7 @@ function toggleSelection(item, filterName, maxItemSelection) {
 
   // Check the number of selected tags
   var selectedTagCount = selectedTags.querySelectorAll('.selected-tag').length;
- 
+
 
   if (selectedTagCount < maxItemSelection) {
       // Check if the tag is already selected
@@ -112,7 +107,7 @@ function toggleSelection(item, filterName, maxItemSelection) {
           // Exclude the selected option from the dropdown
           const dropdownItem = dropdown.querySelector(`.dropdown-item[data-value="${item}"]`);
           dropdownItem.style.display = 'none';
-          document.querySelector('.placeholder').style.display = 'none';
+          document.getElementById(filterName + '-placeholder').style.display = 'none';
 
           // Add item to the filter array
           filters[filterName].push(item);
@@ -120,6 +115,7 @@ function toggleSelection(item, filterName, maxItemSelection) {
       }
   }
 }
+
 
 
 function clearAllItems(filterName) {
@@ -135,28 +131,57 @@ function clearAllItems(filterName) {
   selectedTags.innerHTML = '';
 
   // Show the placeholder
-  document.querySelector('.placeholder').style.display = 'block';
+  document.getElementById(filterName + '-placeholder').style.display = 'block';
 
   // Clear filters array
-  filters.brigade = [];
+  Object.keys(filters).forEach(property => {
+    filters[property] = [];
+  });
+  filters.legality = ["Rotation"];
   filterCards();
 }
 
-// Hide dropdown if clicked outside the multi-select component
+// Show or hide the dropdown
+function toggleDropdown(filterName) {
+  var dropdown = document.getElementById(filterName + '-dropdown');
+  console.log(filterName + '-dropdown');
+  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+}
+
+// Hide dropdowns of all multi-selects except the clicked one, and hide dropdowns if none are clicked
 window.addEventListener('click', function(event) {
-  const multiSelect = document.querySelector('.multi-select');
-  const dropdowns = document.getElementsByClassName('dropdown');
+  const multiSelects = document.querySelectorAll('.multi-select');
+  const dropdowns = document.querySelectorAll('.dropdown');
 
-  // Convert HTMLCollection to an array for easier iteration
-  const dropdownArray = Array.from(dropdowns);
-
-  // Check if the event target is outside the multi-select and dropdown components
+  // Check if the event target is outside all multi-select and dropdown components
   if (
-    !multiSelect.contains(event.target) &&
-    !dropdownArray.some(dropdown => dropdown.contains(event.target))
+    !multiSelects || 
+    !Array.from(multiSelects).some(multiSelect => multiSelect.contains(event.target))
   ) {
-    dropdownArray.forEach(dropdown => {
+    // Hide dropdowns of all multi-selects
+    console.log("Hide all dropdowns");
+    dropdowns.forEach(dropdown => {
       dropdown.style.display = 'none';
+    });
+
+    // Show the dropdown of the clicked multi-select
+    const clickedMultiSelect = Array.from(multiSelects).find(multiSelect => multiSelect.contains(event.target));
+    if (clickedMultiSelect) {
+      const clickedDropdown = clickedMultiSelect.querySelector('.dropdown');
+      if (clickedDropdown) {
+        clickedDropdown.style.display = 'block';
+      }
+    }
+  } else {
+    // Hide dropdowns of all multi-selects except the clicked one
+    multiSelects.forEach(multiSelect => {
+      if (!multiSelect.contains(event.target)) {
+        const dropdown = multiSelect.querySelector('.dropdown');
+        if (dropdown) {
+          dropdown.style.display = 'none';
+        }
+      }
     });
   }
 });
+
