@@ -106,7 +106,7 @@ body {
     height: 100%;
     position: fixed;
     top: 0;
-    right: 00px; /* change to -400px */
+    right: -400px; /* change to -400px */
     overflow-x: hidden;
     z-index: 50;
     background-color: #333333;

@@ -116,8 +116,6 @@ function toggleSelection(item, filterName, maxItemSelection) {
   }
 }
 
-
-
 function clearAllItems(filterName) {
   const selectedTags = document.getElementById(filterName + '-selected-tags');
   const dropdown = document.getElementById(filterName + '-dropdown');

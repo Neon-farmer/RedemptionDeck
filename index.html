@@ -6,79 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Redemption, redemption card viewer, ccg, redemptiondb, RedemptionDeck">
     <title>RedemptionDeck</title>
-    <link rel="stylesheet" href="style.css"></link>
-    <link rel="stylesheet" href="search.css"></link>
+    <link rel="stylesheet" href="css/style.css"></link>
+    <link rel="stylesheet" href="css/filters.css"></link>
+    <link rel="stylesheet" href="css/scrollbars.css"></link>
+    <script src="js/jquery-3.7.1.min.js"></script> 
+    <script defer src="js/cardloader.js"></script>
+    <script defer src="js/dropdownItems.js"></script>
+    <script defer src="js/filters.js"></script>
+    <script defer src="js/drawerOverlay.js"></script>
     <script src="https://kit.fontawesome.com/d458697f00.js" crossorigin="anonymous"></script></head>
-    <script src="jquery-3.7.1.min.js"></script>
-    <script defer src="cardloader.js"></script>
 <body>
     <header>
         <div class="toolbar">
             <h1 id='title'>RedemptionDeck</h1>
-            <label for="drawer-checkbox" id="expand-drawer">              
+            <label for="drawer-checkbox" id="expand-drawer">    
+                <div class="icon-container">          
                 <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                <div>
             </label>
         </div>
     </header>
     <input type="checkbox" name="drawer-checkbox" id="drawer-checkbox"/>
-    
+
     <div id="drawer">
 
+        <!-- Close drawer button -->
         <div class="drawer-section">
-            <label for="drawer-checkbox" id="close-drawer">
-                <i class="fa-solid fa-xmark fa-2xl"></i>
-            </label>
+                <label for="drawer-checkbox" id="close-drawer">
+                    <i class="fa-solid fa-xmark fa-2xl"></i>
+                </label>
+        </div>
+
+        <!-- Filters -->
+        <div class="drawer-section">
+            <div id="brigade-filter" class="multi-select"></div>
         </div>
 
         <div class="drawer-section">
-            <div class="list-wrapper">
-                <div class="checkbox-list">
+            <div id="type-filter" class="multi-select"></div>
+        </div>
 
-                    <label for="check1" class="label">
-                        <div class="checkbox-list-item">
-                            <input type="checkbox" class="checkbox" id="check1" value="">
-                            <img src="images/checkmark.png" alt="checkmark" height="20" id="check1img" class="checkimg">
-                            <p class="checkbox-description">Red</p>
-                        </div>
-                    </label>
-
-                    <label for="check2" class="label">
-                    <div class="checkbox-list-item">
-                        <input type="checkbox" class="checkbox" id="check2" value="">
-                        <img src="images/checkmark.png" alt="checkmark" height="20" id="check2img" class="checkimg">
-                        <p class="checkbox-description">Blue</p>
-                    </div>
-                    </label>
-
-                    <label for="check3" class="label">
-                    <div class="checkbox-list-item">
-                        <input type="checkbox" class="checkbox" id="check3" value="">
-                        <img src="images/checkmark.png" alt="checkmark" height="20" id="check3img" class="checkimg">
-                        <p class="checkbox-description">Green</p>
-                    </div>
-                    </label>
-
-                    <label for="check4" class="label">
-                    <div class="checkbox-list-item">
-                        <input type="checkbox" class="checkbox" id="check4" value="">
-                        <img src="images/checkmark.png" alt="checkmark" height="20" id="check4img" class="checkimg">
-                        <p class="checkbox-description">Yellow</p>
-                    </div>
-                    </label>
-
-                </div>
-        
-            </div>
+        <div class="drawer-section">
+            <div id="set-filter" class="multi-select"></div>
         </div>
         <div class="drawer-section">
-
+            <div id="alignment-filter" class="multi-select"></div>
         </div>
-        <div class="drawer-section">
-
-        </div>
-        
-
     </div>
+
+    <!-- Transparent overlay when drawer is open -->
+    <div class="overlay" id="overlay"></div>
 
     <div id="card-list">
         
