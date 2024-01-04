@@ -87,7 +87,7 @@ let filters = {
   ability: [],
   rarity: [],
   alignment: [],
-  legality: ["Rotation"],
+  legality: [],
 };
 
 

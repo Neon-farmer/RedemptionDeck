@@ -1,7 +1,23 @@
 // This file contains the drop down items for dropdown menus
 
-const alignment = [
-  'Good', 'Evil', 'Neutral'
+const rarities = [
+  'Common', 
+  'Rare', 
+  'Ultra Rare', 
+  'Starter'
+]
+
+const classes = [
+  'Territory', 
+  'Weapon', 
+  'Warrior', 
+  'Star'
+]
+
+const alignments = [
+  'Good', 
+  'Evil', 
+  'Neutral'
 ]
 
 const brigades = [
@@ -12,7 +28,12 @@ const brigades = [
 ];
 
 const types = [
-  'GE', 'EE'
+  'Good Enhancement', 
+  'Evil Enhancement', 
+  'Artifact', 
+  'Evil Character', 
+  'Hero', 
+  'Lost Soul'
 ]
 
 const sets = [
@@ -24,11 +45,11 @@ const sets = [
   'Lineage of Christ',
   'Prophecies of Christ',
   '10th Anniversary',
-  '1st Edition',
-  '1st Edition Unlimited',
-  '2nd Edition',
-  '2nd Edition Revised',
-  '3rd Edition',
+  'A & B Starter',
+  'A & B Starter (Unlimited)',
+  'C & D Starter',
+  'C & D Starter (Revised)',
+  'E & F Starter',
   'Angel Wars',
   'Apostles',
   'Cloud of Witnesses',
@@ -36,8 +57,8 @@ const sets = [
   'Early Church',
   'Faith of Our Fathers',
   'Fall of Man',
-  'I',
-  'J',
+  'I Starter',
+  'J Starter',
   'Kings',
   'Main',
   'Main Unlimited',

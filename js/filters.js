@@ -1,8 +1,10 @@
 
 buildDropdownFilter('brigade', brigades, 'Brigade', 3);
-buildDropdownFilter('type', types, 'Type', 3);
+buildDropdownFilter('type', types, 'Type', 2);
 buildDropdownFilter('set', sets, 'Set', 1);
-buildDropdownFilter('alignment', alignment, 'Alignment', 2);
+buildDropdownFilter('alignment', alignments, 'Alignment', 2);
+buildDropdownFilter('class', classes, 'Class', 1);
+buildDropdownFilter('rarity', rarities, 'Rarity', 1);
 
 // Build the multiselect filters
 function buildDropdownFilter(filterName, dropdownItemArray, placeholderText, maxItemSelection) {
