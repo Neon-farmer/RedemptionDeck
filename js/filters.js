@@ -131,11 +131,13 @@ function clearAllItems(filterName) {
   // Show the placeholder
   document.getElementById(filterName + '-placeholder').style.display = 'block';
 
-  // Clear filters array
+  // Clear the filter array for that filter
   Object.keys(filters).forEach(property => {
-    filters[property] = [];
+    if (property == filterName) {
+      filters[property] = [];
+    }
   });
-  filters.legality = ["Rotation"];
+  
   filterCards();
 }
 

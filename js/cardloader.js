@@ -100,6 +100,7 @@ async function filterCards() {
 
   // Apply filters
   filteredCardJSON = await new Promise(resolve => {
+    
     const filteredCards = globalCardJSON.filter(card => {
     
       // Filter by Brigade
@@ -123,12 +124,17 @@ async function filterCards() {
       
       // filters.legality.length === 0 ||
 
-      
+      // By Set
+      const setCondition =
+        filters.set.length === 0 ||
+        filters.set.every(selectedSet => card.Set.includes(selectedSet));
+        console.log(filters.set.length === 0);
 
       return brigadeCondition &&
-             typeCondition &&
-             alignmentCondition &&
-             legalityCondition;
+        typeCondition &&
+        alignmentCondition &&
+        legalityCondition &&
+        setCondition;
   });
 
   resolve(filteredCards);
