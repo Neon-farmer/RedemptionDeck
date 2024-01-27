@@ -87,7 +87,7 @@ let filters = {
   ability: [],
   rarity: [],
   alignment: [],
-  legality: [],
+  legality: ['Rotation'],
 };
 
 
@@ -120,20 +120,43 @@ async function filterCards() {
       
       // Filter by legality
       const legalityCondition = 
-      filters.legality.every(selectedLegality => card.Legality.includes(selectedLegality));
-      
-      // filters.legality.length === 0 ||
+      filters.legality.length === 0 ||
+      filters.legality.some(selectedLegality => card.Legality.includes(selectedLegality));
 
-      // By Set
+      // Filter by Set
       const setCondition =
         filters.set.length === 0 ||
         filters.set.every(selectedSet => card.Set.includes(selectedSet));
-        console.log(filters.set.length === 0);
 
+      // Filter by Name
+      const nameCondtion = 
+        filters.name.length === 0 ||
+        card.Name.toLowerCase().includes(filters.name.toLowerCase());
+
+      // Filter by Identifier
+      const IdentifierCondtion = 
+        filters.identifier.length === 0 ||
+        card.Identifier.toLowerCase().includes(filters.identifier.toLowerCase());
+
+      // Filter by Ability
+      const AbilityCondtion = 
+        filters.ability.length === 0 ||
+        card.SpecialAbility.toLowerCase().includes(filters.ability.toLowerCase());
+
+      // Filter by Rarity
+      const rarityCondition = 
+        filters.rarity.length === 0 ||
+        filters.rarity.some(selectedRarity => card.Rarity.includes(selectedRarity));
+
+      console.log(filters.name);
       return brigadeCondition &&
+        rarityCondition &&
+        nameCondtion &&
         typeCondition &&
         alignmentCondition &&
         legalityCondition &&
+        AbilityCondtion &&
+        IdentifierCondtion &&
         setCondition;
   });
 

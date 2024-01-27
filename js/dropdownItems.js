@@ -1,5 +1,10 @@
 // This file contains the drop down items for dropdown menus
 
+const legalities = [
+  'Rotation',
+  'Scrolls'
+]
+
 const rarities = [
   'Common', 
   'Rare', 

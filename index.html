@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Redemption, redemption card viewer, ccg, redemptiondb, RedemptionDeck">
     <title>RedemptionDeck</title>
-    <link rel="stylesheet" href="css/style.css"></link>
-    <link rel="stylesheet" href="css/filters.css"></link>
-    <link rel="stylesheet" href="css/scrollbars.css"></link>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/filters.css">
+    <link rel="stylesheet" href="css/scrollbars.css">
     <script src="js/jquery-3.7.1.min.js"></script> 
     <script defer src="js/cardloader.js"></script>
     <script defer src="js/dropdownItems.js"></script>
@@ -32,20 +32,42 @@
 
         <!-- Close drawer button -->
         <div class="drawer-section">
-                <label for="drawer-checkbox" id="close-drawer">
-                    <i class="fa-solid fa-xmark fa-2xl"></i>
-                </label>
+            <label for="drawer-checkbox" id="close-drawer">
+                <i class="fa-solid fa-xmark fa-2xl"></i>
+            </label>
         </div>
-
+        
         <!-- Filters -->
+        <div class="drawer-section">
+            <div class="text-select">
+                <div class="text-input-container">
+                    <input type="text" class="text-input" id="name-filter" placeholder="Name"/>
+                    <i class="fa-solid fa-xmark fa-2xl clear-all" id="clear-name"></i>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-section">
+            <div class="text-select">
+                <div class="text-input-container">
+                    <input type="text" class="text-input" id="identifier-filter" placeholder="Identifier"/>
+                    <i class="fa-solid fa-xmark fa-2xl clear-all" id="clear-identifier"></i>
+                </div>
+            </div>
+        </div>
+        <div class="drawer-section">
+            <div class="text-select">
+                <div class="text-input-container">
+                    <input type="text" class="text-input" id="ability-filter" placeholder="Special Ability"/>
+                    <i class="fa-solid fa-xmark fa-2xl clear-all" id="clear-ability"></i>
+                </div>
+            </div>
+        </div>
         <div class="drawer-section">
             <div id="brigade-filter" class="multi-select"></div>
         </div>
-
         <div class="drawer-section">
             <div id="type-filter" class="multi-select"></div>
         </div>
-
         <div class="drawer-section">
             <div id="set-filter" class="multi-select"></div>
         </div>
@@ -59,10 +81,10 @@
             <div id="rarity-filter" class="multi-select"></div>
         </div>
         <div class="drawer-section">
-            <div id="reference-filter" class="multi-select"></div>
+            <div id="legality-filter" class="multi-select"></div>
         </div>
         <div class="drawer-section">
-            <div id="name-filter" class="text-input"></div>
+            <div id="reference-filter" class="multi-select"></div>
         </div>
         <div class="drawer-section">
             <div id="identifier-filter" class="text-input"></div>

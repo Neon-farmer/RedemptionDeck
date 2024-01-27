@@ -1,10 +1,10 @@
-
 buildDropdownFilter('brigade', brigades, 'Brigade', 3);
 buildDropdownFilter('type', types, 'Type', 2);
 buildDropdownFilter('set', sets, 'Set', 1);
 buildDropdownFilter('alignment', alignments, 'Alignment', 2);
 buildDropdownFilter('class', classes, 'Class', 1);
 buildDropdownFilter('rarity', rarities, 'Rarity', 1);
+buildDropdownFilter('legality', legalities, 'Legality', 2);
 
 // Build the multiselect filters
 function buildDropdownFilter(filterName, dropdownItemArray, placeholderText, maxItemSelection) {
@@ -76,15 +76,16 @@ function buildDropdownFilter(filterName, dropdownItemArray, placeholderText, max
   // Append dropdown to the main container
   filterContainer.appendChild(dropdown);
 
+  // Show only rotation by default
+  if(filterName == "legality") {
+    toggleSelection("Rotation", "legality", 2);
+  }
 }
 
+function filterText(filterName, text) {
+  var filter = getElementById(filterName + '-filter');
 
-
-
-
-
-
-
+}
 
 function toggleSelection(item, filterName, maxItemSelection) {
   var selectedTags = document.getElementById(filterName + '-selected-tags');
@@ -187,3 +188,49 @@ window.addEventListener('click', function(event) {
   }
 });
 
+// Update Filter Array on Text Inputs
+
+// Name
+const nameFilter = document.getElementById('name-filter');
+const clearName = document.getElementById('clear-name');
+
+clearName.addEventListener('click', function(event) {
+  nameFilter.value = '';
+  filters.name = '';
+  filterCards();
+});
+
+nameFilter.addEventListener('input', function(event) {
+  filters.name = event.target.value;
+  filterCards();
+});
+
+// Identifier
+const identifierFilter = document.getElementById('identifier-filter');
+const clearIdentifier = document.getElementById('clear-identifier');
+
+identifierFilter.addEventListener('input', function(event) {
+  filters.identifier = event.target.value;
+  filterCards();
+});
+
+clearIdentifier.addEventListener('click', function(event) {
+  identifierFilter.value = '';
+  filters.identifier = '';
+  filterCards();
+});
+
+// Ability
+const abilityFilter = document.getElementById('ability-filter');
+const clearAbility = document.getElementById('clear-ability');
+
+abilityFilter.addEventListener('input', function(event) {
+  filters.ability = event.target.value;
+  filterCards();
+});
+
+clearAbility.addEventListener('click', function(event) {
+  abilityFilter.value = '';
+  filters.ability = '';
+  filterCards();
+});
