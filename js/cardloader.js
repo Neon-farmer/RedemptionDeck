@@ -148,6 +148,12 @@ async function filterCards() {
         filters.rarity.length === 0 ||
         filters.rarity.some(selectedRarity => card.Rarity.includes(selectedRarity));
 
+      // Filter by Class
+      const classCondition = 
+      filters.class.length === 0 ||
+      filters.class.some(selectedClass => card.Class.includes(selectedClass));
+
+
       console.log(filters.name);
       return brigadeCondition &&
         rarityCondition &&
@@ -157,6 +163,7 @@ async function filterCards() {
         legalityCondition &&
         AbilityCondtion &&
         IdentifierCondtion &&
+        classCondition &&
         setCondition;
   });
 
