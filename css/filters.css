@@ -131,7 +131,7 @@
   color: #a5a5a5;
 }
 
-#clear-name, #clear-identifier, #clear-ability {
+#clear-name, #clear-identifier, #clear-ability, #clear-reference {
   font-size: 1.5em;
   position: absolute;
   top: 19px;

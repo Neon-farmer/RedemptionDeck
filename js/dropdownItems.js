@@ -38,7 +38,8 @@ const types = [
   'Artifact', 
   'Evil Character', 
   'Hero', 
-  'Lost Soul'
+  'Lost Soul',
+  'Fortress'
 ]
 
 const sets = [
@@ -77,4 +78,4 @@ const sets = [
   'Thesaurus ex Preteritus',
   'Warriors',
   'Women'
-  ];
+];

@@ -88,6 +88,7 @@ let filters = {
   rarity: [],
   alignment: [],
   legality: ['Rotation'],
+  reference: []
 };
 
 
@@ -153,6 +154,11 @@ async function filterCards() {
       filters.class.length === 0 ||
       filters.class.some(selectedClass => card.Class.includes(selectedClass));
 
+      // Filter by Reference
+      const referenceCondition = 
+        filters.reference.length === 0 ||
+        card.Reference.toLowerCase().includes(filters.reference.toLowerCase());
+
 
       console.log(filters.name);
       return brigadeCondition &&
@@ -164,7 +170,8 @@ async function filterCards() {
         AbilityCondtion &&
         IdentifierCondtion &&
         classCondition &&
-        setCondition;
+        setCondition &&
+        referenceCondition;
   });
 
   resolve(filteredCards);

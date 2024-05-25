@@ -234,3 +234,18 @@ clearAbility.addEventListener('click', function(event) {
   filters.ability = '';
   filterCards();
 });
+
+// Reference
+const referenceFilter = document.getElementById('reference-filter');
+const clearReference = document.getElementById('clear-reference');
+
+referenceFilter.addEventListener('input', function(event) {
+  filters.reference = event.target.value;
+  filterCards();
+});
+
+clearReference.addEventListener('click', function(event) {
+  referenceFilter.value = '';
+  filters.reference = '';
+  filterCards();
+});
