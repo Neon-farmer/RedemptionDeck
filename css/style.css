@@ -54,7 +54,7 @@ body {
 }
 
 #close-drawer {
-    display: block;
+    /* display: block; */
     padding-left: 15px;
     position: absolute;
     left: 0px;
