@@ -40,8 +40,8 @@ const types = [
   'Hero', 
   'Lost Soul',
   'Fortress',
-  'Domninant',
-  'Lost Soul'
+  'Dominant',
+  'Site'
 ]
 
 const sets = [
