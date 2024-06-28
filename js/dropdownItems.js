@@ -39,7 +39,9 @@ const types = [
   'Evil Character', 
   'Hero', 
   'Lost Soul',
-  'Fortress'
+  'Fortress',
+  'Domninant',
+  'Lost Soul'
 ]
 
 const sets = [
