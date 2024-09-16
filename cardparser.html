@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert File to JSON</title>
+</head>
+<body>
+    <h1>Convert Text File to JSON</h1>
+    <input type="file" id="fileInput" />
+    <button id="convertButton">Convert</button>
+    <button id="copyButton">Copy to Clipboard</button>
+    <pre id="output"></pre>
+    
+    <script>
+        document.getElementById('convertButton').addEventListener('click', function() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select a file.');
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const text = event.target.result;
+                const lines = text.trim().split('\n');
+                
+                // Extract the header and the data
+                const headers = lines[0].split('\t').map(header => header.trim());
+                const dataLines = lines.slice(1);
+                
+                const jsonArray = dataLines.map(line => parseLine(line, headers));
+                const jsonString = JSON.stringify(jsonArray, null, 2);
+                
+                document.getElementById('output').textContent = jsonString;
+            };
+            
+            reader.readAsText(file);
+        });
+        
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const outputText = document.getElementById('output').textContent;
+            
+            if (outputText) {
+                navigator.clipboard.writeText(outputText)
+                    .then(() => {
+                        alert('JSON copied to clipboard!');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text: ', err);
+                        alert('Failed to copy JSON to clipboard.');
+                    });
+            } else {
+                alert('No JSON to copy.');
+            }
+        });
+        
+        function parseLine(line, headers) {
+            const parts = line.split('\t').map(part => part.trim());
+            
+            // Ensure parts and headers have the same length
+            if (parts.length !== headers.length) {
+                console.warn('Line does not match header length:', line);
+                return null;
+            }
+            
+            // Map parts to JSON object using headers
+            const jsonObject = {};
+            headers.forEach((header, index) => {
+                const value = parts[index] || "";
+                jsonObject[header] = value;
+            });
+            
+            // Additional formatting for 'Type'
+            jsonObject.Type = formatType(jsonObject.Type);
+            
+            // Ensure Legality defaults to 'Scrolls' if missing or empty
+            jsonObject.Legality = jsonObject.Legality || "Scrolls";
+            
+            jsonObject.Alignment = jsonObject.Alignment || "";
+            
+            return jsonObject;
+        }
+        
+        function formatType(type) {
+            switch (type) {
+                case "GE":
+                    return "Good Enhancement";
+                case "EE":
+                    return "Evil Enhancement";
+                case "GE/EE":
+                    return "Good Enhancement/Evil Enhancement";
+                case "Covenant":
+                    return "Artifact/Good Enhancement";
+                case "Curse":
+                    return "Artifact/Evil Enhancement";
+                default:
+                    return type; // If none of the cases match, return the original type
+            }
+        }
+    </script>
+</body>
+</html>

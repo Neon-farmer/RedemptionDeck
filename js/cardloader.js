@@ -7,7 +7,7 @@ let filteredCardJSON;
 // Load card metadata into globalCardJSON array
 async function fetchCards() {
   try {
-    const response = await fetch('./cards2.json');
+    const response = await fetch('./cards3.json');
     if (!response.ok) {
       throw new Error('Network error');
     }
@@ -127,7 +127,7 @@ async function filterCards() {
       // Filter by Set
       const setCondition =
         filters.set.length === 0 ||
-        filters.set.every(selectedSet => card.Set.includes(selectedSet));
+        filters.set.every(selectedSet => card.OfficialSet.includes(selectedSet));
 
       // Filter by Name
       const nameCondtion = 

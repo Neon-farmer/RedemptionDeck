@@ -41,10 +41,11 @@ const types = [
   'Lost Soul',
   'Fortress',
   'Dominant',
-  'Site'
+  'Site',
 ]
 
 const sets = [
+  'Israel\'s Inheritance',
   'Roots',
   'Israel\'s Rebellion',
   'K Starter',
